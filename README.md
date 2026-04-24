@@ -54,7 +54,7 @@ curl -L https://foundry.paradigm.xyz | bash
 ````
 - In the output, it will say that foundryup has been added to the PATH (usually ~/.bashrc or similar). To activate it:
 ````
-source ~/.bashrc   # veya kullandığınız shell’e göre: source ~/.zshrc
+source ~/.bashrc   # or depending on your shell: source ~/.zshrc
 ````
 
 3.3) Install Foundry tools (forge, cast, anvil, chisel).
@@ -81,7 +81,7 @@ This section is taken verbatim from the Arc documentation.
 ````
 forge init hello-arc && cd hello-arc
 ````
-- Bu, klasik Counter.sol şablonu ile birlikte src/, script/, test/ vb. klasörleri oluşturur.
+- This creates src/, script/, test/ etc. directories along with the classic Counter.sol template.
 
 4.2) Create a .env file for Arc RPC.
 
@@ -262,19 +262,18 @@ forge create src/HelloArchitect.sol:HelloArchitect \
   --private-key $PRIVATE_KEY \
   --broadcast
 ````
-- Başarılı olursa çıktı şuna benzer:
+- If successful, the output will look like this:
 ````
 Compiler run successful!
 Deployer:      0xB815A0c4bC23930119324d4359dB65e27A846A2d
 Deployed to:   0x32368037b14819C9e5Dbe96b3d67C59b8c65c4BF
 Transaction hash: 0xeba0fcb5e528d586db0aeb2465a8fad0299330a9773ca62818a1827560a67346
 ````
-- Deployed to: satırındaki adresi kaydet.
+- Save the address from the Deployed to: line.
 
-7.5) Sözleşme adresini .env’e kaydet ve yeniden yükle.
+7.5) Save the contract address to .env and reload.
 ````
-# ...
-HELLOARCHITECT_ADDRESS="0x32368037b14819C9e5Dbe96b3d67C59b8c65c4BF"  # kendi adresinle değiştir
+HELLOARCHITECT_ADDRESS="0x32368037b14819C9e5Dbe96b3d67C59b8c65c4BF"  # change with your own address
 ````
 - If successful, the output will look like this:
 ````
@@ -312,15 +311,15 @@ cast send $HELLOARCHITECT_ADDRESS \
   --rpc-url $ARC_TESTNET_RPC_URL \
   --private-key $PRIVATE_KEY
 ````
-- Sonra tekrar:
+- Then again:
 ````
 cast call $HELLOARCHITECT_ADDRESS "getGreeting()(string)" \
   --rpc-url $ARC_TESTNET_RPC_URL
 ````
-- Artık ````Selam Arc!```` dönmesi gerekir.
+- Now it should return ````Hello Arc!````.
 
-Not: Kullandığım resmi kaynaklar aşağıdadır. Daha ayrıntılı adımları linklerde bulabilirsiniz.
+Note: The official sources I used are below. You can find more detailed steps in the links.
 
-- Deploy on Arc (Foundry ile): https://docs.arc.network/arc/tutorials/deploy-on-arc
+- Deploy on Arc (with Foundry): https://docs.arc.network/arc/tutorials/deploy-on-arc
 - Connect to Arc (RPC, Chain ID, Explorer, Faucet): https://docs.arc.network/arc/references/connect-to-arc
-- Foundry resmi kurulum: https://github.com/foundry-rs/foundry
+- Foundry official installation: https://github.com/foundry-rs/foundry
